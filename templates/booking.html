@@ -1,0 +1,83 @@
+{% extends "base_generic.html" %}
+
+
+{% block content %}
+<div class="content-wrapper" id="content">
+  <h1>Calendar to book your day at the office </h1>
+  <br/>
+  <br/>
+  {% for mm in months %}
+  <br/>
+  <br/>
+  <table border=1>
+    <thead>
+      <tr>
+	<th colspan=1>
+	  <button
+		hx-trigger="click"
+		hx-target="#content"
+		hx-swap="outerHTML"
+		hx-push-url="true"
+		hx-get="/?id={{ prev }}">
+		Prev 
+	  </button>
+  	</th>
+        <th colspan=5>
+            {{ mm.0 }} {{ mm.1 }}
+        </th>
+	<th colspan=1>
+	  <button
+		class="btn btn-primary mt-10"
+		role="button"
+		hx-trigger="click"
+		hx-target="#content"
+		hx-swap="outerHTML"
+		hx-push-url="true"
+		hx-get="/?id={{ next }}">
+		Next
+	  </button>
+	</th>
+      </tr>
+      <tr>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
+          <th>Sunday</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+	      {% for cell in mm.2 %}
+	      <!-- <td class={{cell.status}}> -->
+	      <td class="{{ cell.status }}">
+		<form method="post" action="/pubsub">{% csrf_token %}
+			<input type=hidden name=day value={{cell.id}}>
+			<button name="id" value={{ cell.name }} class="button {{cell.present}}">
+			{{ cell.name }}
+			</button>
+		</form>
+		<div class="details">{{cell.details}} spots lefts</div>
+	      </td>
+	      	{%if cell.wd == 6 %}
+      		 </tr><tr>
+		{% endif %}
+	      {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+  <br/>
+  <br/>
+  {% endfor %}
+  <br/>
+
+
+
+  <br/>
+  <br/>
+  <br/>
+  <li><a href="{% url 'logout' %}">Logout</a></li>
+</div>
+{% endblock %}
