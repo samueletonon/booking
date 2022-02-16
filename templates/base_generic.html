@@ -1,43 +1,146 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  {% block title %}<title>Book me up before you go go</title>{% endblock %}
-  <script src="https://unpkg.com/htmx.org@1.6.1" integrity="sha384-tvG/2mnCFmGQzYC1Oh3qxQ7CkQ9kMzYjWZSNtrRZygHPDDqottzEJsqS4oUVodhW" crossorigin="anonymous"></script>
-<style type="text/css">
+  <head>
+    {% block title %}<title>Book me up before you go go</title>{% endblock %}
+    <script src="https://unpkg.com/htmx.org@1.6.1" integrity="sha384-tvG/2mnCFmGQzYC1Oh3qxQ7CkQ9kMzYjWZSNtrRZygHPDDqottzEJsqS4oUVodhW" crossorigin="anonymous"></script>
+    <style type="text/css">
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+        v2.0 | 20110126
+        License: none (public domain)
+      */
 
-.red {
-	background-color: #ff0000;
-}
-.green {
-	background-color: #00ff00;
-}
-.yellow {
-	background-color: #ffff00;
-}
-div.details {
-	text-align: right;
-	font-size: x-small;
-}
+      html, body, div, span, applet, object, iframe,
+      h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+      a, abbr, acronym, address, big, cite, code,
+      del, dfn, em, img, ins, kbd, q, s, samp,
+      small, strike, strong, sub, sup, tt, var,
+      b, u, i, center,
+      dl, dt, dd, ol, ul, li,
+      fieldset, form, label, legend,
+      table, caption, tbody, tfoot, thead, tr, th, td,
+      article, aside, canvas, details, embed, 
+      figure, figcaption, footer, header, hgroup, 
+      menu, nav, output, ruby, section, summary,
+      time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+      }
+      /* HTML5 display-role reset for older browsers */
+      article, aside, details, figcaption, figure, 
+      footer, header, hgroup, menu, nav, section {
+        display: block;
+      }
+      body {
+        line-height: 1;
+      }
+      ol, ul {
+        list-style: none;
+      }
+      blockquote, q {
+        quotes: none;
+      }
+      blockquote:before, blockquote:after,
+      q:before, q:after {
+        content: '';
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      /* // CSS RESET */
+      body{
+        font-family: Arial, sans-serif;
+        margin: 6pt;
+      }
 
-.button {
-  /*background-color: #FF7F00; /* Green */
-  color: black;
-  border-radius: 4px;
-}
+      table {
+        color: #333;
+        background: white;
+        font-size: 12pt;
+        border-collapse: collapse;
+      }
+      
+      table thead th,
+      table tfoot th {
+        color: white;
+        border-collapse: collapse;
+        background: #444444;
+      }
+      table caption {
+        padding:.5em;
+      }
+      table th,
+      table td {
+        padding: .5em;
+        text-align: left;
+      }
 
-.booked {
-  background-color: black;
-  color: white;
-  border-radius: 4px;
-}
-
-table { background-color: #ffffff; }
-
-</style>
+      table td {
+        height: 36pt;
+        width: 72pt;
+      }
 
 
-</head>
-<body>
-  {% block content %}<!-- default content text (typically empty) -->{% endblock %}
-</body>
+      td.date-cell{
+        cursor: pointer;
+      }
+      td.date-cell.red:hover{
+        background-color: #FF4136a3
+      }
+      td.date-cell.green:hover{
+        background-color: #2ECC40a3
+      }
+      td.date-cell.yellow:hover{
+        background-color: #FFDC00a3
+      }
+      
+      .red {
+        background-color: #FF4136
+      }
+      .green {
+        background-color: #2ECC40
+      }
+      .yellow {
+        background-color: #FFDC00
+      }
+      div.details {
+        font-size: 8pt;
+      }
+
+      .date{
+        color: white;
+        margin-bottom: 2pt;
+        font-weight: bolder;
+        font-size: 18pt;
+      }
+      
+      .button {
+        /*background-color: #FF7F00; /* Green */
+        color: #111111;
+        border-radius: 4px;
+      }
+      .booked {
+        background-color: #111111;
+        color: white;
+        border-radius: 4px;
+      }
+      table { background-color: #ffffff; }
+
+      /* helper classes not a good practice :) */
+      .align-sub {
+        vertical-align: sub;
+      }
+
+    </style>
+
+
+  </head>
+  <body>
+    {% block content %}<!-- default content text (typically empty) -->{% endblock %}
+  </body>
 </html>
