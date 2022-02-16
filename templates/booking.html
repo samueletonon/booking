@@ -76,6 +76,14 @@
   {% endfor %}
   <br/>
 
+  <ul>
+  {% for booking in months.0.2 %}
+  	{% if booking.present == "booked" %}
+	<li> {{ booking.id }} {{ user.first_name }} {{ user.last_name }} is  booked</l1>
+  	{% endif %}
+  {% endfor %}
+  </ul>
+  <br/>
 
 
   <br/>
