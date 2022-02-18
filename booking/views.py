@@ -48,6 +48,7 @@ def create_day_structure(calendar, day, username, append=True):
         color = "green"
     info = {
         "id": day.strftime("%Y%m%d"),
+        "date": day.strftime("%d-%m-%Y"),
         "name": day.day,
         "status": color,
         "details": details,

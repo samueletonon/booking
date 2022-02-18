@@ -61,7 +61,7 @@
 			<form id={{cell.id}} method="post" action="/pubsub">{% csrf_token %}
 				<input type=hidden name=day value={{cell.id}}>
 			</form>
-			<div class="date">{{cell.name}}</div>
+			<div class="date {{cell.present}}">{{cell.name}}</div>
 			<div class="details">{{cell.details}} spots lefts</div>
 	      </td>
 	      	{%if cell.wd == 6 %}
@@ -79,7 +79,7 @@
   <ul>
   {% for booking in months.0.2 %}
   	{% if booking.present == "booked" %}
-	<li> {{ booking.id }} {{ user.first_name }} {{ user.last_name }} is  booked</l1>
+	<li> On {{ booking.date }} {{ user.first_name }} {{ user.last_name }} is  booked</l1>
   	{% endif %}
   {% endfor %}
   </ul>
